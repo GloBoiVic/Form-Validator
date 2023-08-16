@@ -1,96 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Form Validator</title>
-		<link rel="icon" type="image/png" href="form.png" />
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Register/Login</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="styles.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+			integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+			crossorigin="anonymous"
+		/>
 	</head>
 	<body>
 		<div class="container">
-			<h1>Sign Up Today!</h1>
-			<!-- Form -->
-			<form id="form">
-				<!-- Full Name -->
-				<div class="form-group">
-					<label for="name">Full Name</label>
-					<input
-						type="text"
-						id="name"
-						name="name"
-						placeholder="Full Name"
-						required
-						minlength="3"
-						maxlength="100"
-					/>
+			<div class="form-row">
+				<!-- col left -->
+				<div class="form-col-left">
+					<h2>Register Now!</h2>
+					<form class="register-form">
+						<div class="form-item-list">
+							<!-- item -->
+							<div class="form-item">
+								<label for="firstname">first name</label>
+								<div class="form-group">
+									<span><i class="fas fa-user"></i></span>
+									<input
+										type="text"
+										class="form-control"
+										id="firstname"
+										placeholder="first name"
+									/>
+								</div>
+							</div>
+							<!-- end of item -->
+							<!-- item -->
+							<div class="form-item">
+								<label for="lastname">last name</label>
+								<div class="form-group">
+									<span><i class="fas fa-user"></i></span>
+									<input
+										type="text"
+										class="form-control"
+										id="lastname"
+										placeholder="last name"
+									/>
+								</div>
+							</div>
+							<!-- end of item -->
+							<!-- item -->
+							<div class="form-item">
+								<label for="email">email adddress</label>
+								<div class="form-group">
+									<span><i class="fas fa-envelope"></i></span>
+									<input
+										type="text"
+										class="form-control"
+										id="email"
+										placeholder="email"
+									/>
+								</div>
+							</div>
+							<!-- end of item -->
+							<!-- item -->
+							<div class="form-item">
+								<label for="phonenumber">phone number</label>
+								<div class="form-group">
+									<span><i class="fas fa-phone-alt"></i></span>
+									<input
+										type="text"
+										class="form-control"
+										id="phonenumber"
+										placeholder="XXX-XXX-XXXX"
+									/>
+								</div>
+							</div>
+							<!-- end of item -->
+							<!-- item -->
+							<div class="form-item">
+								<label for="password">password</label>
+								<div class="form-group">
+									<span><i class="fas fa-lock"></i></span>
+									<input
+										type="password"
+										class="form-control"
+										id="password"
+										placeholder="password"
+									/>
+								</div>
+							</div>
+							<!-- end of item -->
+							<!-- item -->
+							<div class="form-item">
+								<label for="confirm-password">confirm password</label>
+								<div class="form-group">
+									<span><i class="fas fa-lock"></i></span>
+									<input
+										type="password"
+										class="form-control"
+										id="confirm-password"
+										placeholder="confirm password"
+									/>
+								</div>
+							</div>
+							<!-- end of item -->
+						</div>
+
+						<span class="submission-status">Text here</span>
+
+						<button type="submit" id="submit-btn">
+							register now
+							<i class="fas fa-long-arrow-alt-right"></i>
+						</button>
+					</form>
 				</div>
-				<!-- Phone Number -->
-				<div class="form-group">
-					<label for="phone">Phone Number</label>
-					<input
-						type="tel"
-						id="phone"
-						name="phone"
-						placeholder="555-555-5555"
-						required
-						pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-					/>
+				<!-- end of col left -->
+				<!-- col right -->
+				<div class="form-col-right">
+					<h2>Already Registered?</h2>
+					<p class="text">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+						voluptate adipisci deserunt laboriosam illum. Tempore quidem cum
+						dolore, delectus nobis temporibus fugiat voluptatibus natus
+						reiciendis.
+					</p>
+					<button type="button" id="login-btn">
+						Login
+						<i class="fas fa-long-arrow-alt-right"></i>
+					</button>
 				</div>
-				<!-- Email Address -->
-				<div class="form-group">
-					<label for="email">Email Address</label>
-					<input
-						type="email"
-						id="email"
-						name="email"
-						placeholder="email@address.com"
-						required
-					/>
-				</div>
-				<!-- Website URL -->
-				<div class="form-group">
-					<label for="website">Website URL</label>
-					<input
-						type="url"
-						id="website"
-						name="website"
-						placeholder="http://jacinto.design"
-						required
-					/>
-				</div>
-				<!-- Password -->
-				<div class="form-group">
-					<label for="password1">Password</label>
-					<input
-						type="password"
-						id="password1"
-						placeholder="Create Password (Min. 8 characters)"
-						required
-						pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
-						title="Please include at least 1 uppercase character, 1 lowercase character, and 1 number."
-					/>
-				</div>
-				<!-- Confirm Password -->
-				<div class="form-group">
-					<label for="password2">Confirm Password</label>
-					<input
-						type="password"
-						id="password2"
-						placeholder="Confirm Password"
-						required
-						pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
-						name="password"
-					/>
-				</div>
-				<button type="submit">Register</button>
-			</form>
-			<!-- Error/Success Message -->
-			<div class="message-container">
-				<h3 id="message">Don't Hesitate!</h3>
+				<!-- end of col right -->
 			</div>
 		</div>
-		<!-- Script -->
+
 		<script src="script.js"></script>
 	</body>
 </html>
