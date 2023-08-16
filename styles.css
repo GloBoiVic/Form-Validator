@@ -188,6 +188,7 @@ button {
 	.form-row {
 		display: grid;
 		grid-template-columns: 2fr 1fr;
+		width: 90vw;
 	}
 	.form-col-right {
 		display: flex;
