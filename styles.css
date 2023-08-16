@@ -7,7 +7,6 @@
 body {
 	font-family: 'Poppins', sans-serif;
 	line-height: 1.5;
-	/* background: url('yoga.png') center/cover no-repeat; */
 	background: radial-gradient(
 		circle at 10% 20%,
 		rgb(69, 86, 102) 0%,
@@ -15,38 +14,24 @@ body {
 	);
 }
 
-h2 {
+.form-col-left h2 {
 	letter-spacing: 2px;
 	padding: 1rem 0;
-	opacity: 0.9;
-}
-
-.text {
-	font-weight: 300;
-	line-height: 1.7;
-	padding: 0.5rem 0;
 }
 
 button {
 	cursor: pointer;
 	outline: 0;
 	color: #fff;
-	background: #c81d25;
+	background: #3029ec;
 	display: block;
 	border: 1px solid #fff;
 	border-radius: 5px;
 	font-family: inherit;
 	font-size: 0.9rem;
 	letter-spacing: 2px;
-	margin: 1.5rem 0;
-	padding: 0.85rem 2rem;
 	text-transform: uppercase;
 	transition: all 0.4s ease-in-out;
-}
-
-button:hover {
-	filter: brightness(200%);
-	background: rgb(22, 22, 22);
 }
 
 .container {
@@ -72,14 +57,9 @@ button:hover {
 	padding: 2rem 2.8rem;
 }
 
-.form-col-right {
-	flex: 1;
-	background: #c81d25;
-	color: #fff;
-}
-
+/* Form col left */
 .form-col-left h2 {
-	color: #c81d25;
+	color: #3029ec;
 }
 
 .form-item label {
@@ -97,6 +77,7 @@ button:hover {
 	grid-template-columns: 40px auto;
 	align-items: center;
 	border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+	margin-bottom: 1rem;
 	transition: all 0.5s ease;
 }
 
@@ -130,19 +111,59 @@ button:hover {
 }
 
 #submit-btn {
-	border-color: #c81d25;
-	margin-top: 0.6rem;
+	border-color: #3029ec;
+	margin: 1.5rem 0;
+	padding: 0.85rem 2rem;
 }
 
 #submit-btn:hover {
-	border-color: #c81d25;
+	border-color: #3029ec;
 	background: #fff;
-	color: #c81d25;
+	color: #3029ec;
+}
+
+/* Form col right */
+.form-col-right {
+	flex: 1;
+	background: #3029ec;
+	color: #fff;
+	display: flex;
+	align-items: center;
+}
+
+.form-col-right h2 {
+	font-size: 1rem;
+}
+
+#login-btn {
+	font-size: 0.6rem;
+	letter-spacing: 2px;
+	margin: 0 1.5rem;
+	padding: 0.4rem 1rem;
 }
 
 #login-btn:hover {
 	background: #fff;
-	color: #c81d25;
+	color: #3029ec;
+}
+
+/* messages */
+.error {
+	border-color: #3029ec;
+}
+
+.success {
+	border-color: #28a745;
+}
+
+.errorMessage {
+	visibility: visible;
+	color: #3029ec;
+}
+
+.successMessage {
+	visibility: visible;
+	color: #28a745;
 }
 
 /* Media Queries */
@@ -173,23 +194,8 @@ button:hover {
 		flex-direction: column;
 		justify-content: center;
 	}
-}
 
-/* messages */
-.error {
-	border-color: #c81d25;
-}
-
-.success {
-	border-color: #28a745;
-}
-
-.errorMessage {
-	visibility: visible;
-	color: #c81d25;
-}
-
-.successMessage {
-	visibility: visible;
-	color: #28a745;
+	#login-btn {
+		margin-top: 1rem;
+	}
 }
