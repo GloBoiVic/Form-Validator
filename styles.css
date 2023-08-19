@@ -1,7 +1,16 @@
 * {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+:root {
+	--main-blue: #3f39ff;
+	--main-red: #ea3333;
+	--main-green: #28a745;
 }
 
 body {
@@ -12,60 +21,44 @@ body {
 		rgb(69, 86, 102) 0%,
 		rgb(34, 34, 34) 90%
 	);
+	box-sizing: border-box;
 }
 
-.form-col-left h2 {
-	letter-spacing: 2px;
-	padding: 1rem 0;
-}
-
-button {
-	cursor: pointer;
-	outline: 0;
-	color: #fff;
-	background: #3029ec;
-	display: block;
-	border: 1px solid #fff;
-	border-radius: 5px;
-	font-family: inherit;
-	font-size: 0.9rem;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	transition: all 0.4s ease-in-out;
-}
-
-.container {
+.wrapper {
 	min-height: 100vh;
-	margin: 0 1rem;
+	margin: 0 2rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.form-row {
+.form-container {
 	background-color: #fff;
 	display: flex;
 	flex-direction: column;
 	justify-content: stretch;
 	margin: 3rem 0;
-	max-width: 1080px;
+	max-width: 108rem;
 	box-shadow: 0 0 20px -3px rgba(161, 161, 161, 0.67);
 	border-radius: 8px;
 }
 
-.form-row > div {
-	padding: 2rem 2.8rem;
+.form-col-left h2 {
+	letter-spacing: 0.2rem;
+	padding: 1rem 0;
+	font-size: 2.5rem;
+	color: var(--main-blue);
 }
 
-/* Form col left */
-.form-col-left h2 {
-	color: #3029ec;
+.form-container > div {
+	padding: 2rem 2.8rem;
 }
 
 .form-item label {
 	text-transform: uppercase;
-	letter-spacing: 1px;
+	letter-spacing: 0.1rem;
 	color: rgba(0, 0, 0, 0.6);
+	font-size: 1.2rem;
 	font-weight: 600;
 	margin-bottom: 0.7rem;
 	display: block;
@@ -74,9 +67,9 @@ button {
 .form-group {
 	padding: 0.5rem 0;
 	display: grid;
-	grid-template-columns: 40px auto;
+	grid-template-columns: 4rem auto;
 	align-items: center;
-	border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+	border-bottom: 0.05rem solid rgba(0, 0, 0, 0.2);
 	margin-bottom: 1rem;
 	transition: all 0.5s ease;
 }
@@ -89,81 +82,93 @@ button {
 	width: 100%;
 	border: none;
 	outline: 0;
-	font-size: 1rem;
+	font-size: 1.1rem;
 	font-family: inherit;
 	font-weight: 300;
-	letter-spacing: 1px;
+	letter-spacing: 0.1rem;
 	padding-left: 0.4rem;
 }
 
 .form-control::placeholder {
-	opacity: 0.8;
 	text-transform: capitalize;
 }
 
+button {
+	cursor: pointer;
+	outline: 0;
+	color: #fff;
+	background: var(--main-blue);
+	display: block;
+	border: 0.1rem solid #fff;
+	border-radius: 0.5rem;
+	font-family: inherit;
+	letter-spacing: 0.2rem;
+	text-transform: uppercase;
+	transition: all 0.4s ease-in-out;
+}
+
 .submission-status {
-	margin-top: 0.6rem;
-	padding: 0.6rem;
-	letter-spacing: 1px;
+	margin: 0.6rem 0;
+	/* padding: 0.6rem; */
+	letter-spacing: 0.1rem;
 	display: block;
 	font-weight: 500;
 	visibility: hidden;
+	font-size: 1rem;
 }
 
-#submit-btn {
-	border-color: #3029ec;
+.submit-btn {
 	margin: 1.5rem 0;
 	padding: 0.85rem 2rem;
+	font-size: 0.9rem;
 }
 
-#submit-btn:hover {
-	border-color: #3029ec;
+.submit-btn:hover {
+	border-color: var(--main-blue);
 	background: #fff;
-	color: #3029ec;
+	color: var(--main-blue);
 }
 
 /* Form col right */
 .form-col-right {
 	flex: 1;
-	background: #3029ec;
+	background: var(--main-blue);
 	color: #fff;
 	display: flex;
 	align-items: center;
 }
 
 .form-col-right h2 {
-	font-size: 1rem;
+	font-size: 1.5rem;
 }
 
-#login-btn {
+.login-btn {
 	font-size: 0.6rem;
-	letter-spacing: 2px;
+	letter-spacing: 0.2rem;
 	margin: 0 1.5rem;
-	padding: 0.4rem 1rem;
+	padding: 0.85rem 1.5rem;
 }
 
-#login-btn:hover {
+.login-btn:hover {
 	background: #fff;
-	color: #3029ec;
+	color: var(--main-blue);
 }
 
 /* messages */
 .error {
-	border-color: #3029ec;
+	border-color: var(--main-red);
 }
 
 .success {
-	border-color: #28a745;
+	border-color: var(--main-green);
 }
 
 .errorMessage {
-	visibility: visible;
-	color: #3029ec;
+	color: var(--main-red);
 }
 
 .successMessage {
-	visibility: visible;
-	color: #28a745;
+	color: var(--main-green);
 }
 
 /* Media Queries */
@@ -185,7 +190,7 @@ button {
 }
 
 @media screen and (min-width: 992px) {
-	.form-row {
+	.form-container {
 		display: grid;
 		grid-template-columns: 2fr 1fr;
 		width: 90vw;
@@ -196,7 +201,7 @@ button {
 		justify-content: center;
 	}
 
-	#login-btn {
+	.login-btn {
 		margin-top: 1rem;
 	}
 }

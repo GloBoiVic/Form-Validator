@@ -39,7 +39,7 @@ function validateInputValues() {
 		inputStatus(true, lastName);
 		inputValidationStatus[1] = true;
 	} else {
-		inputStatus(false, firstName);
+		inputStatus(false, lastName);
 		inputValidationStatus[1] = false;
 	}
 	if (validateEmail(email.value)) {
