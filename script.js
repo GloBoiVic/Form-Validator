@@ -1,7 +1,7 @@
 'use strict';
+
 const registerForm = document.querySelector('.register-form');
 const submitBtn = document.getElementById('submit-btn');
-const submissionStatus = document.querySelector('.submission-status');
 
 const firstName = document.getElementById('firstname');
 const lastName = document.getElementById('lastname');
@@ -9,73 +9,10 @@ const email = document.getElementById('email');
 const phoneNumber = document.getElementById('phonenumber');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
+// const message = document.getElementById('message');
 
-submitBtn.addEventListener('click', (e) => {
-	e.preventDefault();
-	let isValidForm = validateInputValues();
-	if (isValidForm) {
-		submissionStatus.classList.add('successMessage');
-		submissionStatus.textContent = 'Registration Succeeded';
-	} else {
-		submissionStatus.classList.add('errorMessage');
-		submissionStatus.textContent = 'Registration Failed';
-	}
-
-	// setTimeout(() => {
-	// 	submissionStatus.classList.remove('errorMessage', 'successMessage');
-	// }, 1500);
-});
-
-function validateInputValues() {
-	let inputValidationStatus = [];
-	if (validateName(firstName.value)) {
-		inputStatus(true, firstName);
-		inputValidationStatus[0] = true;
-	} else {
-		inputStatus(false, firstName);
-		inputValidationStatus[0] = false;
-	}
-	if (validateName(lastName.value)) {
-		inputStatus(true, lastName);
-		inputValidationStatus[1] = true;
-	} else {
-		inputStatus(false, lastName);
-		inputValidationStatus[1] = false;
-	}
-	if (validateEmail(email.value)) {
-		inputStatus(true, email);
-		inputValidationStatus[2] = true;
-	} else {
-		inputStatus(false, email);
-		inputValidationStatus[2] = false;
-	}
-	if (validatePhoneNumber(phoneNumber.value)) {
-		inputStatus(true, phoneNumber);
-		inputValidationStatus[3] = true;
-	} else {
-		inputStatus(false, phoneNumber);
-		inputValidationStatus[3] = false;
-	}
-	if (validatePassword(password.value)) {
-		inputStatus(true, password);
-		inputValidationStatus[4] = true;
-	} else {
-		inputStatus(false, password);
-		inputValidationStatus[4] = false;
-	}
-
-	if (
-		confirmPassword.value.trim() !== '' &&
-		validateConfirmPassword(password.value, confirmPassword.value)
-	) {
-		inputStatus(true, confirmPassword);
-		inputValidationStatus[5] = true;
-	} else {
-		inputStatus(false, confirmPassword);
-		inputValidationStatus[5] = false;
-	}
-
-	return inputValidationStatus.includes(false) ? false : true;
+function isRequired(value) {
+	return value === '' ? false : true;
 }
 
 function validateName(name) {
@@ -106,13 +43,95 @@ function validateConfirmPassword(password, confirmPassword) {
 	return password === confirmPassword;
 }
 
-function inputStatus(status, input) {
-	let inputGroup = input.parentElement;
-	status
-		? inputGroup.classList.add('success')
-		: inputGroup.classList.add('error');
+// function inputStatus(status, input) {
+// 	let inputGroup = input.parentElement;
+// 	status
+// 		? inputGroup.classList.add('success')
+// 		: inputGroup.classList.add('error');
 
-	// setTimeout(() => {
-	// 	inputGroup.classList.remove('success', 'error');
-	// }, 1500);
+// 	// setTimeout(() => {
+// 	// 	inputGroup.classList.remove('success', 'error');
+// 	// }, 1500);
+// }
+
+function isValidFirstName() {
+	let valid = false;
+	const message = firstName.parentElement.nextElementSibling;
+	if (!isRequired(firstName.value)) {
+		message.textContent = 'First Name cannot be blank';
+		firstName.parentElement.classList.add('error');
+	} else if (!validateName(firstName.value)) {
+		message.textContent = 'Enter a valid first name';
+		firstName.parentElement.classList.add('error');
+	} else {
+		message.textContent = '';
+		valid = true;
+		firstName.parentElement.classList.add('success');
+	}
+	return valid;
+}
+
+function isValidLastName() {
+	let valid = false;
+	const message = lastName.parentElement.nextElementSibling;
+	if (!isRequired(lastName.value)) {
+		message.textContent = 'Last Name cannot be blank';
+		lastName.parentElement.classList.add('error');
+	} else if (!validateName(lastName.value)) {
+		message.textContent = 'Enter a valid last name';
+		lastName.parentElement.classList.add('error');
+	} else {
+		message.textContent = '';
+		valid = true;
+		lastName.parentElement.classList.add('success');
+	}
+	return valid;
+}
+
+function isValidEmail() {
+	let valid = false;
+	const message = email.parentElement.nextElementSibling;
+	if (!isRequired(email.value)) {
+		message.textContent = 'Email cannot be blank';
+		email.parentElement.classList.add('error');
+	} else if (!validateEmail(email.value)) {
+		message.textContent = 'Enter a valid email';
+		email.parentElement.classList.add('error');
+	} else {
+		message.textContent = '';
+		valid = true;
+		email.parentElement.classList.add('success');
+	}
+	return valid;
+}
+
+function isValidPhoneNumber() {
+	let valid = false;
+	const message = phoneNumber.parentElement.nextElementSibling;
+	if (!isRequired(phoneNumber.value)) {
+		message.textContent = 'Phone Number cannot be blank';
+		phoneNumber.parentElement.classList.add('error');
+	} else if (!isValidPhoneNumber(phoneNumber.value)) {
+		message.textContent = 'Enter a valid phone number';
+		phoneNumber.parentElement.classList.add('error');
+	} else {
+		message.textContent = '';
+		valid = true;
+		phoneNumber.parentElement.classList.add('success');
+	}
+	return valid;
+}
+
+registerForm.addEventListener('submit', (e) => {
+	e.preventDefault();
+	isValidFirstName();
+	isValidLastName();
+	isValidEmail();
+	isValidPhoneNumber();
+});
+function removeMessage(element) {
+	setTimeout(() => {
+		element.parentElement.nextElementSibling.textContent = '';
+		element.parentElement.classList.remove('success', 'error');
+	}, 1500);
 }
