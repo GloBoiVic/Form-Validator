@@ -10,7 +10,7 @@ html {
 :root {
 	--main-blue: #3f39ff;
 	--main-red: #ea3333;
-	--main-green: #28a745;
+	--main-green: #04bb2ef2;
 }
 
 body {
@@ -54,6 +54,11 @@ body {
 	padding: 2rem 2.8rem;
 }
 
+.form-item {
+	display: flex;
+	flex-direction: column;
+}
+
 .form-item label {
 	text-transform: uppercase;
 	letter-spacing: 0.1rem;
@@ -67,9 +72,11 @@ body {
 .form-group {
 	padding: 0.5rem 0;
 	display: grid;
-	grid-template-columns: 4rem auto;
+	/* grid-template-columns: 4rem auto; */
+	display: flex;
+	gap: 2rem;
 	align-items: center;
-	border-bottom: 0.05rem solid rgba(0, 0, 0, 0.2);
+	border-bottom: 0.08rem solid rgba(0, 0, 0, 0.2);
 	margin-bottom: 1rem;
 	transition: all 0.5s ease;
 }
@@ -154,6 +161,11 @@ button {
 	color: var(--main-blue);
 }
 
+.message {
+	margin: 0 0 1rem 0;
+	color: var(--main-red);
+}
+
 /* messages */
 .error {
 	border-color: var(--main-red);
@@ -161,14 +173,6 @@ button {
 
 .success {
 	border-color: var(--main-green);
-}
-
-.errorMessage {
-	color: var(--main-red);
-}
-
-.successMessage {
-	color: var(--main-green);
 }
 
 /* Media Queries */
