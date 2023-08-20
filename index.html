@@ -21,7 +21,7 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<div class="form-container">
+			<div class="form-container" id="formContainer">
 				<!-- col left -->
 				<div class="form-col-left">
 					<h2>Registeration Form</h2>
@@ -113,7 +113,7 @@
 									<input
 										type="password"
 										class="form-control"
-										id="confirm-password"
+										id="confirmPassword"
 										placeholder="confirm password"
 									/>
 								</div>
@@ -140,6 +140,11 @@
 					</button>
 				</div>
 				<!-- end of col right -->
+			</div>
+
+			<!-- Success Page -->
+			<div class="success-page hidden" id="successPage">
+				<h1>Successfully Registered!</h1>
 			</div>
 		</div>
 
