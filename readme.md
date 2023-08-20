@@ -19,7 +19,7 @@
 
 ![Flick Finder Screenshot](project-visual.png)
 
-Clean Modern Registeration form
+Clean Modern and Mobile Responsive Registration form
 
 ### :computer: Built With
 
