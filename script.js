@@ -11,7 +11,6 @@ const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
 
 const allInputs = document.querySelectorAll('.form-control');
-console.log(allInputs);
 // const message = document.getElementById('message');
 
 function isRequired(value) {
@@ -33,6 +32,7 @@ function validateEmail(email) {
 function validatePhoneNumber(number) {
 	const phoneRegex =
 		/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+	// /^\(?(\d{3})\)?[-]?(\d{3})[-]?(\d{4})$/;
 
 	return phoneRegex.test(number);
 }
@@ -42,7 +42,7 @@ function validatePassword(password) {
 	return passwordRegex.test(password);
 }
 
-function validateConfirmPassword(password, confirmPassword) {
+function passwordMatch(password, confirmPassword) {
 	return password === confirmPassword;
 }
 
@@ -114,7 +114,7 @@ function isValidPhoneNumber() {
 	if (!isRequired(phoneNumber.value)) {
 		message.textContent = 'Phone Number cannot be blank';
 		phoneNumber.parentElement.classList.add('error');
-	} else if (!isValidPhoneNumber(phoneNumber.value)) {
+	} else if (!validatePhoneNumber(phoneNumber.value)) {
 		message.textContent = 'Enter a valid phone number';
 		phoneNumber.parentElement.classList.add('error');
 	} else {
@@ -125,12 +125,41 @@ function isValidPhoneNumber() {
 	return valid;
 }
 
+function isValidPassword(e) {
+	let valid = false;
+	const passwordMsg = password.parentElement.nextElementSibling;
+	const confirmPasswordMsg = confirmPassword.parentElement.nextElementSibling;
+
+	if (!isRequired(password.value) && !isRequired(confirmPassword.value)) {
+		passwordMsg.textContent = 'Please create a password';
+		confirmPasswordMsg.textContent = 'Please confirm your password';
+		password.parentElement.classList.add('error');
+		confirmPassword.parentElement.classList.add('error');
+	} else if (!validatePassword(password.value)) {
+		passwordMsg.textContent =
+			'Password must contain: min 8 characters, a lowercase and capital letter, and a special character ';
+		password.parentElement.classList.add('error');
+	} else if (!passwordMatch(password.value, confirmPassword.value)) {
+		confirmPasswordMsg.textContent = 'Password do not match';
+		password.parentElement.classList.add('error');
+		confirmPassword.parentElement.classList.add('error');
+	} else {
+		valid = true;
+		passwordMsg.textContent = confirmPasswordMsg.textContent = '';
+		password.parentElement.classList.add('success');
+		confirmPassword.parentElement.classList.add('success');
+	}
+	// console.log(e.currentTarget);
+	return valid;
+}
+
 registerForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	isValidFirstName();
 	isValidLastName();
 	isValidEmail();
 	isValidPhoneNumber();
+	isValidPassword(e);
 });
 // function removeMessage(element) {
 // 	setTimeout(() => {
