@@ -1,13 +1,10 @@
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="form-icon.png" alt="Logo" width="80" height="80">
-  </a>
-
+	<img src="form-icon.png" alt="Logo" width="80" height="80">
   <h1 align="center">Registration Form</h1>
 
   <div align="center">
 		<h3>
-			<a href="https://globoivic.github.io/Music-Player/">
+			<a href="https://globoivic.github.io/Form-Validator/">
 				Demo
 			</a>
 			<span> | </span>
@@ -18,25 +15,25 @@
 	</div>
 </div>
 
-## :page_facing_up: About The Project
+### :page_facing_up: About The Project
 
 ![Flick Finder Screenshot](project-visual.png)
 
 Clean Modern Registeration form
 
-## :computer: Built With
+### :computer: Built With
 
 - ![HTML][HTML-shield]
 - ![CSS][CSS-shield]
 - ![JavaScript][JavaScript-shield]
 
-## :fire: Features
+### :fire: Features
 
 - Custom validation is implemented for each form input
 - Friendly error messages are displayed to guide the user to input the desired data
 - On all valid inputs, form is submitted
 
-## :bust_in_silhouette: Contact
+### :bust_in_silhouette: Contact
 
 - [LinkedIn](https://www.linkedin.com/in/developing-vic/) - please reach out to me! I want to connect with other developers!
 
