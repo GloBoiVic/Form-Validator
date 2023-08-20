@@ -69,6 +69,12 @@ body {
 	display: block;
 }
 
+.form-item label span {
+	font-size: 0.8rem;
+	text-transform: lowercase;
+	font-size: 300;
+}
+
 .form-group {
 	padding: 0.5rem 0;
 	display: grid;
