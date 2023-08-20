@@ -174,6 +174,7 @@ registerForm.addEventListener('submit', (e) => {
 	) {
 		formContainer.style.display = 'none';
 		successPage.classList.remove('hidden');
+		registerForm.reset();
 	}
 });
 
