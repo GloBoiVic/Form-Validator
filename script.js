@@ -9,6 +9,9 @@ const email = document.getElementById('email');
 const phoneNumber = document.getElementById('phonenumber');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
+
+const allInputs = document.querySelectorAll('.form-control');
+console.log(allInputs);
 // const message = document.getElementById('message');
 
 function isRequired(value) {
@@ -129,9 +132,16 @@ registerForm.addEventListener('submit', (e) => {
 	isValidEmail();
 	isValidPhoneNumber();
 });
-function removeMessage(element) {
-	setTimeout(() => {
-		element.parentElement.nextElementSibling.textContent = '';
-		element.parentElement.classList.remove('success', 'error');
-	}, 1500);
-}
+// function removeMessage(element) {
+// 	setTimeout(() => {
+// 		element.parentElement.nextElementSibling.textContent = '';
+// 		element.parentElement.classList.remove('success', 'error');
+// 	}, 1500);
+// }
+
+allInputs.forEach((input) => {
+	input.addEventListener('focus', (e) => {
+		e.currentTarget.parentElement.nextElementSibling.textContent = '';
+		e.currentTarget.parentElement.classList.remove('success', 'error');
+	});
+});
