@@ -1,18 +1,22 @@
 'use strict';
 
+const formContainer = document.getElementById('formContainer');
+const successPage = document.getElementById('successPage');
+
 const registerForm = document.querySelector('.register-form');
-const submitBtn = document.getElementById('submit-btn');
+const submitBtn = document.getElementById('submitBtn');
 
 const firstName = document.getElementById('firstname');
 const lastName = document.getElementById('lastname');
 const email = document.getElementById('email');
 const phoneNumber = document.getElementById('phonenumber');
 const password = document.getElementById('password');
-const confirmPassword = document.getElementById('confirm-password');
+const confirmPassword = document.getElementById('confirmPassword');
 
 const allInputs = document.querySelectorAll('.form-control');
 // const message = document.getElementById('message');
 
+let valid = false;
 function isRequired(value) {
 	return value === '' ? false : true;
 }
@@ -58,7 +62,7 @@ function passwordMatch(password, confirmPassword) {
 // }
 
 function isValidFirstName() {
-	let valid = false;
+	// let valid = false;
 	const message = firstName.parentElement.nextElementSibling;
 	if (!isRequired(firstName.value)) {
 		message.textContent = 'First Name cannot be blank';
@@ -75,7 +79,7 @@ function isValidFirstName() {
 }
 
 function isValidLastName() {
-	let valid = false;
+	// let valid = false;
 	const message = lastName.parentElement.nextElementSibling;
 	if (!isRequired(lastName.value)) {
 		message.textContent = 'Last Name cannot be blank';
@@ -92,7 +96,7 @@ function isValidLastName() {
 }
 
 function isValidEmail() {
-	let valid = false;
+	// let valid = false;
 	const message = email.parentElement.nextElementSibling;
 	if (!isRequired(email.value)) {
 		message.textContent = 'Email cannot be blank';
@@ -109,7 +113,7 @@ function isValidEmail() {
 }
 
 function isValidPhoneNumber() {
-	let valid = false;
+	// let valid = false;
 	const message = phoneNumber.parentElement.nextElementSibling;
 	if (!isRequired(phoneNumber.value)) {
 		message.textContent = 'Phone Number cannot be blank';
@@ -125,8 +129,8 @@ function isValidPhoneNumber() {
 	return valid;
 }
 
-function isValidPassword(e) {
-	let valid = false;
+function isValidPassword() {
+	// let valid = false;
 	const passwordMsg = password.parentElement.nextElementSibling;
 	const confirmPasswordMsg = confirmPassword.parentElement.nextElementSibling;
 
@@ -149,7 +153,6 @@ function isValidPassword(e) {
 		password.parentElement.classList.add('success');
 		confirmPassword.parentElement.classList.add('success');
 	}
-	// console.log(e.currentTarget);
 	return valid;
 }
 
@@ -159,14 +162,19 @@ registerForm.addEventListener('submit', (e) => {
 	isValidLastName();
 	isValidEmail();
 	isValidPhoneNumber();
-	isValidPassword(e);
+	isValidPassword();
+
+	if (valid) {
+		formContainer.style.display = 'none';
+		successPage.classList.remove('hidden');
+	}
 });
-// function removeMessage(element) {
-// 	setTimeout(() => {
-// 		element.parentElement.nextElementSibling.textContent = '';
-// 		element.parentElement.classList.remove('success', 'error');
-// 	}, 1500);
-// }
+
+// submitBtn.addEventListener('click', () => {
+// 	if (valid) {
+// 		formContainer.classList.add('hidden');
+// 	}
+// });
 
 allInputs.forEach((input) => {
 	input.addEventListener('focus', (e) => {
