@@ -14,8 +14,6 @@ const confirmPassword = document.getElementById('confirmPassword');
 
 const allInputs = document.querySelectorAll('.form-control');
 
-let valid = false;
-
 function isRequired(value) {
 	return value === '' ? false : true;
 }
@@ -35,7 +33,6 @@ function validateEmail(email) {
 function validatePhoneNumber(number) {
 	const phoneRegex =
 		/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-	// /^\(?(\d{3})\)?[-]?(\d{3})[-]?(\d{4})$/;
 
 	return phoneRegex.test(number);
 }
@@ -50,13 +47,18 @@ function passwordMatch(password, confirmPassword) {
 }
 
 function isValidFirstName() {
+	let valid = false;
 	const message = firstName.parentElement.nextElementSibling;
 	if (!isRequired(firstName.value)) {
 		message.textContent = 'First Name cannot be blank';
 		firstName.parentElement.classList.add('error');
-	} else if (!validateName(firstName.value)) {
+		return;
+	}
+
+	if (!validateName(firstName.value)) {
 		message.textContent = 'Enter a valid first name';
 		firstName.parentElement.classList.add('error');
+		return;
 	} else {
 		message.textContent = '';
 		valid = true;
@@ -66,13 +68,18 @@ function isValidFirstName() {
 }
 
 function isValidLastName() {
+	let valid = false;
 	const message = lastName.parentElement.nextElementSibling;
 	if (!isRequired(lastName.value)) {
 		message.textContent = 'Last Name cannot be blank';
 		lastName.parentElement.classList.add('error');
-	} else if (!validateName(lastName.value)) {
+		return;
+	}
+
+	if (!validateName(lastName.value)) {
 		message.textContent = 'Enter a valid last name';
 		lastName.parentElement.classList.add('error');
+		return;
 	} else {
 		message.textContent = '';
 		valid = true;
@@ -82,11 +89,16 @@ function isValidLastName() {
 }
 
 function isValidEmail() {
+	let valid = false;
+
 	const message = email.parentElement.nextElementSibling;
 	if (!isRequired(email.value)) {
 		message.textContent = 'Email cannot be blank';
 		email.parentElement.classList.add('error');
-	} else if (!validateEmail(email.value)) {
+		return;
+	}
+
+	if (!validateEmail(email.value)) {
 		message.textContent = 'Enter a valid email';
 		email.parentElement.classList.add('error');
 	} else {
@@ -98,11 +110,16 @@ function isValidEmail() {
 }
 
 function isValidPhoneNumber() {
+	let valid = false;
+
 	const message = phoneNumber.parentElement.nextElementSibling;
 	if (!isRequired(phoneNumber.value)) {
 		message.textContent = 'Phone Number cannot be blank';
 		phoneNumber.parentElement.classList.add('error');
-	} else if (!validatePhoneNumber(phoneNumber.value)) {
+		return;
+	}
+
+	if (!validatePhoneNumber(phoneNumber.value)) {
 		message.textContent = 'Enter a valid phone number';
 		phoneNumber.parentElement.classList.add('error');
 	} else {
@@ -114,18 +131,25 @@ function isValidPhoneNumber() {
 }
 
 function isValidPassword() {
+	let valid = false;
 	const passwordMsg = password.parentElement.nextElementSibling;
 	const confirmPasswordMsg = confirmPassword.parentElement.nextElementSibling;
 
-	if (!isRequired(password.value) && !isRequired(confirmPassword.value)) {
+	if (!isRequired(password.value)) {
 		passwordMsg.textContent = 'Please create a password';
-		confirmPasswordMsg.textContent = 'Please confirm your password';
 		password.parentElement.classList.add('error');
+		return;
+	} else if (!isRequired(confirmPassword.value)) {
+		confirmPasswordMsg.textContent = 'Please confirm your password';
 		confirmPassword.parentElement.classList.add('error');
-	} else if (!validatePassword(password.value)) {
+		return;
+	}
+
+	if (!validatePassword(password.value)) {
 		passwordMsg.textContent =
 			'Password must contain: min 8 characters, a lowercase and capital letter, and a special character ';
 		password.parentElement.classList.add('error');
+		confirmPassword.parentElement.classList.add('error');
 	} else if (!passwordMatch(password.value, confirmPassword.value)) {
 		confirmPasswordMsg.textContent = 'Password do not match';
 		password.parentElement.classList.add('error');
@@ -141,14 +165,13 @@ function isValidPassword() {
 
 registerForm.addEventListener('submit', (e) => {
 	e.preventDefault();
-	isValidFirstName();
-	isValidLastName();
-	isValidEmail();
-	isValidPhoneNumber();
-	isValidPassword();
-
-	if (valid) {
-		registerForm.reset();
+	if (
+		isValidFirstName() &&
+		isValidLastName() &&
+		isValidEmail() &&
+		isValidPhoneNumber() &&
+		isValidPassword()
+	) {
 		formContainer.style.display = 'none';
 		successPage.classList.remove('hidden');
 	}
