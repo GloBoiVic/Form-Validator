@@ -4,11 +4,11 @@
 
   <div align="center">
 		<h3>
-			<a href="https://globoivic.github.io/Form-Validator/">
+			<a href="https://globoivic.github.io/Registration-Form/">
 				Demo
 			</a>
 			<span> | </span>
-			<a href="https://github.com/GloBoiVic/Form-Validator">
+			<a href="https://github.com/GloBoiVic/Registration-Form">
 				Github Repo
 			</a>
 		</h3>
