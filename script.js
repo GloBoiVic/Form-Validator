@@ -4,6 +4,7 @@ const formContainer = document.getElementById('formContainer');
 const successPage = document.getElementById('successPage');
 
 const registerForm = document.querySelector('.register-form');
+const submitBtn = document.getElementById('submitBtn');
 
 const firstName = document.getElementById('firstname');
 const lastName = document.getElementById('lastname');
@@ -165,17 +166,20 @@ function isValidPassword() {
 
 registerForm.addEventListener('submit', (e) => {
 	e.preventDefault();
-	if (
-		isValidFirstName() &&
-		isValidLastName() &&
-		isValidEmail() &&
-		isValidPhoneNumber() &&
-		isValidPassword()
-	) {
-		formContainer.style.display = 'none';
-		successPage.classList.remove('hidden');
-		registerForm.reset();
-	}
+	submitBtn.textContent = 'Submitting....';
+	setTimeout(() => {
+		if (
+			isValidFirstName() &&
+			isValidLastName() &&
+			isValidEmail() &&
+			isValidPhoneNumber() &&
+			isValidPassword()
+		) {
+			formContainer.style.display = 'none';
+			successPage.classList.remove('hidden');
+			registerForm.reset();
+		}
+	}, 1500);
 });
 
 allInputs.forEach((input) => {
